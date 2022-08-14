@@ -1,3 +1,4 @@
+import { MantineProvider } from "@mantine/core";
 import "../styles/globals.css";
 
 type Props = {
@@ -7,7 +8,18 @@ type Props = {
 
 const MyApp = (props: Props) => {
   const { Component, pageProps } = props;
-  return <Component {...pageProps} />;
+  return (
+    <MantineProvider
+      withGlobalStyles
+      withNormalizeCSS
+      theme={{
+        /** Put your mantine theme override here */
+        colorScheme: "light",
+      }}
+    >
+      <Component {...pageProps} />
+    </MantineProvider>
+  );
 };
 
 export default MyApp;
